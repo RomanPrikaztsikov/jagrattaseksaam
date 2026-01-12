@@ -2,26 +2,23 @@
 require_once("konf.php");
 global $yhendus;
 if(!empty($_REQUEST["korras_id"])){
-    $kask=$yhendus->prepare(
-        "UPDATE jalgrattaeksam SET ringtee=1 WHERE id=?");
+    $kask=$yhendus->prepare("UPDATE jalgrattaeksam SET ringtee=1 WHERE id=?");
     $kask->bind_param("i", $_REQUEST["korras_id"]);
     $kask->execute();
 }
 if(!empty($_REQUEST["vigane_id"])){
-    $kask=$yhendus->prepare(
-        "UPDATE jalgrattaeksam SET ringtee=2 WHERE id=?");
+    $kask=$yhendus->prepare("UPDATE jalgrattaeksam SET ringtee=2 WHERE id=?");
     $kask->bind_param("i", $_REQUEST["vigane_id"]);
     $kask->execute();
 }
-$kask=$yhendus->prepare("SELECT id, eesnimi, perekonnanimi   FROM jalgrattaeksam WHERE teooriatulemus>=9 AND ringtee=-1");  $kask->bind_result($id, $eesnimi, $perekonnanimi);
+$kask=$yhendus->prepare("SELECT id, eesnimi, perekonnanimi FROM jalgrattaeksam WHERE teooriatulemus>=10 AND slaalom=1 AND ringtee=-1");
+$kask->bind_result($id, $eesnimi, $perekonnanimi);
 $kask->execute();
 ?>
 <!doctype html>
 <html>
-<head>
-    <title>Ringtee</title>
-</head>
 <body>
+<?php include("nav.php"); ?>
 <h1>Ringtee</h1>
 <table>
     <?php
