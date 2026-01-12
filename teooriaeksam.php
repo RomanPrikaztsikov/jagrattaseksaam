@@ -4,9 +4,10 @@ global $yhendus;
 if(!empty($_REQUEST["teooriatulemus"])){
     $kask=$yhendus->prepare(
         "UPDATE jalgrattaeksam SET teooriatulemus=? WHERE id=?");
-    $kask->bind_param("ii", $_REQUEST["teooriatulemus"], $_REQUEST["id"]); $kask->execute();
+    $kask->bind_param("ii", $_REQUEST["teooriatulemus"], $_REQUEST["id"]);
+    $kask->execute();
 }
-$kask=$yhendus->prepare("SELECT id, eesnimi, perekonnanimi   FROM jalgrattaeksam WHERE teooriatulemus=-1");
+$kask=$yhendus->prepare("SELECT id, eesnimi, perekonnanimi FROM jalgrattaeksam WHERE teooriatulemus=-1");
 $kask->bind_result($id, $eesnimi, $perekonnanimi);
 $kask->execute();
 ?>
@@ -16,6 +17,8 @@ $kask->execute();
     <title>Teooriaeksam</title>
 </head>
 <body>
+<?php include("nav.php"); ?>
+<h1>Teooriaeksam</h1>
 <table>
     <?php
     while($kask->fetch()){
