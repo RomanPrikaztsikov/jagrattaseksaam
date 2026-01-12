@@ -1,5 +1,6 @@
 <?php
 require_once("konf.php");
+global $yhendus;
 if(!empty($_REQUEST["vormistamine_id"])){
     $kask=$yhendus->prepare(
         "UPDATE jalgrattaeksam SET luba=1 WHERE id=?");
