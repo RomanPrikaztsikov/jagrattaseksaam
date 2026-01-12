@@ -1,5 +1,6 @@
 <?php
 require_once("konf.php");
+require_once("funktsioonid.php");
 global $yhendus;
 if(isSet($_REQUEST["sisestusnupp"])){
     $kask=$yhendus->prepare("INSERT INTO jalgrattaeksam(eesnimi, perekonnanimi) VALUES (?, ?)");

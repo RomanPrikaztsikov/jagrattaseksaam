@@ -1,5 +1,6 @@
 <?php
 require_once("konf.php");
+require_once("funktsioonid.php");
 global $yhendus;
 if(!empty($_REQUEST["teooriatulemus"])){
     $tulemus = $_REQUEST["teooriatulemus"];
